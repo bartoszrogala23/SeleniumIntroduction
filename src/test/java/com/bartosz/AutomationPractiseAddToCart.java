@@ -9,13 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class AutomationPractiseAddToCart {
     private WebDriver driver;
     public Faker faker = new Faker();
-    public Random random = new Random();
 
     @BeforeMethod
     public void setup() {
@@ -79,31 +77,40 @@ public class AutomationPractiseAddToCart {
         WebElement category = driver.findElement(By.cssSelector
                 (".last [href=\"http://automationpractice.com/index.php?id_category=3&controller=category\"]"));
         category.click();
-        WebElement dresses = driver.findElement(By.cssSelector(".subcategory-image [title=\"Dresses\"]"));
+        WebElement dresses = driver.findElement(By.cssSelector
+                (".subcategory-image [title=\"Dresses\"]"));
         dresses.click();
         WebElement eveningDresses = driver.findElement
-                (By.cssSelector("[src=\"http://automationpractice.com/img/c/10-medium_default.jpg\"]"));
+                (By.cssSelector
+                        ("[src=\"http://automationpractice.com/img/c/10-medium_default.jpg\"]"));
         eveningDresses.click();
-        WebElement certainDress = dresses.findElement(By.cssSelector(".replace-2x[title=\"Printed Dress\"]"));
-// od tego momentu nie dziala prawidlowo
-        WebElement add = driver.findElement(By.cssSelector(".ajax_add_to_cart_button"));
-//        add.click();
-        WebElement checkout1 = driver.findElement(By.cssSelector("[title=\"Proceed to checkout\"]"));
-        checkout1.click();
-        WebElement addByPlus = driver.findElement(By.cssSelector(".icon-plus"));
-        addByPlus.click();
-        WebElement checkout2 = driver.findElement(By.cssSelector(".standard-checkout[title=\"Proceed to checkout\"]"));
-        checkout2.click();
-//        WebElement processAddress = driver.findElement(By.cssSelector("[name=\"cgv\"]"));
-//        processAddress.click();
-//        WebElement cgv = driver.findElement(By.cssSelector("#submitAccount"));
-////        cgv.click();
-//        WebElement processCarrier = driver.findElement(By.cssSelector("[name=\"processCarrier\"]"));
-//        processCarrier.click();
-//        WebElement cheque = driver.findElement(By.cssSelector(".cheque"));
-//        cheque.click();
-//        WebElement submit2 = driver.findElement(By.cssSelector("[type=\"submit\"].button-medium"));
-//        submit2.click();
+        WebElement listSelection = driver.findElement(By.cssSelector
+                ("[title=\"List\"]"));
+        listSelection.click();
+        WebElement addToCart = driver.findElement(By.cssSelector
+                ("[title=\"Add to cart\"][data-id-product=\"4\"]"));
+        addToCart.click();
+        WebElement checkout = driver.findElement(By.cssSelector
+                ("[href=\"http://automationpractice.com/index.php?controller=order\"][title=\"Proceed to checkout\"]"));
+        checkout.click();
+        WebElement add = driver.findElement(By.cssSelector
+                ("[title=\"Add\"]"));
+        add.click();
+        WebElement checkoutTwo = driver.findElement(By.cssSelector
+                (".cart_navigation [title=\"Proceed to checkout\"]"));
+        checkoutTwo.click();
+        WebElement proceedAdress = driver.findElement(By.cssSelector
+                ("[name=\"processAddress\"]"));
+        proceedAdress.click();
+        WebElement cgv = driver.findElement(By.id("cgv"));
+        cgv.click();
+        WebElement processCarrier = driver.findElement(By.name("processCarrier"));
+        processCarrier.click();
+        WebElement cheque = driver.findElement(By.className("cheque"));
+        cheque.click();
+        WebElement confirmOrder = driver.findElement(By.cssSelector("[type=\"submit\"].button-medium"));
+        confirmOrder.click();
+
 
     }
 }
